@@ -1,12 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const user_model = require('../models/user.js');
+const user_service = require('../services/user.js');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', user_service.fetchUser)
 
-router.post('/register')
+router.post('/register', user_service.register)
 
 module.exports = router;
