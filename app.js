@@ -10,7 +10,9 @@ const mongoose = require('mongoose');
 var indexRouter = require('./src/routes/index');
 var usersRouter = require('./src/routes/users');
 var postsRouter = require('./src/routes/posts');
-var cartsRouter = require('./src/routes/carts')
+var cartsRouter = require('./src/routes/carts');
+var reviewsRouter = require('./src/routes/reviews');
+var historyRouter = require('./src/routes/history');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter)
 app.use('/cart', cartsRouter);
+app.use('/reviews', reviewsRouter);
+app.use('/history', historyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

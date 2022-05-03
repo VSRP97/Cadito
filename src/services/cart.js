@@ -1,7 +1,6 @@
 const cart_model = require('../models/cart');
 const history_model = require('../models/history.js');
 const { default: mongoose } = require('mongoose');
-const cart = require('../models/cart');
 
 const fetchCart = async (req, res) => {
     const {user_id} = req.query;
