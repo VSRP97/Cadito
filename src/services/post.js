@@ -1,9 +1,9 @@
 const post_model = require('../models/posts.js');
 
 const createPost = async (req, res) => {
-    const {owner_id, image_url, display_name, description, price} = req.body
+    const {owner_id, img_url, display_name, description, price} = req.body
     try {
-        const post = await post_model.create({owner_id, image_url, display_name, description, price })
+        const post = await post_model.create({owner_id, img_url, display_name, description, price })
         return res.status(201).json(post)
     } catch (error) {
         return res.status(500).json(error)
@@ -51,7 +51,7 @@ const fetchUserPosts = async (req, res) => {
     }
     try {
         const posts = await post_model.find({owner_id: user_id});
-        if (!post) {
+        if (!posts) {
             return res.status(403).json({message: 'Incorrect user id.'});
         } else {
             return res.status(200).json(posts)

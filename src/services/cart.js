@@ -12,7 +12,7 @@ const fetchCart = async (req, res) => {
         if (!cart) {
             return res.status(403).json({message: 'Incorrect user id.'});
         } else {
-            return res.status(200).json(cart);
+            return res.status(200).json(cart.items);
         }
     } catch (error) {
         return res.status(500).json(error);

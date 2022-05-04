@@ -6,12 +6,12 @@ const login = async (req, res) => {
         return res.status(400).json({message: 'Missing username or password.'});
     }
     try {
-        const user = await user_model.find({username: username})
+        const user = await user_model.findOne({username: username})
         if (!user) {
             return res.status(403).json({message: 'Incorrect username or password.'});
         } else {
-            if (user[0].password === password) {
-                return res.status(200).json({message: 'Login successful.'});
+            if (user.password === password) {
+                return res.status(200).json(user);
             }else{
                 return res.status(403).json({message: 'Incorrect username or password.'});
             }
@@ -31,7 +31,7 @@ const prev_login = async (req, res) => {
         if (!user) {
             return res.status(404);
         }else{
-            return res.status(200).json({message: 'Login successful.'});
+            return res.status(200).json(user);
         }
     } catch (error) {
         return res.status(500).json(error);
